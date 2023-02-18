@@ -1,0 +1,124 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(252, 248, 241);
+}
+
+.header_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.text_container {
+  font-family: 'Russo One', sans-serif;
+}
+.date_text {
+  
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #FFFFFF;
+}
+
+.time_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+
+  color: #FFFFFF;
+}
+
+.text_container {
+ padding: 2%;
+}
+
+.container {
+  margin-top: 5%;
+  background-color: #FFFFFF;
+}
+
+
+ul {
+  list-style: none;
+}
+
+.header_div {
+  width: 780px;
+  height: 230.58px;
+
+  background: url("../assets/header.jpg");
+  border-radius: 10px 10px 0px 0px;
+}
+
+.form_container {
+  padding: 5%;
+  
+}
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-family: 'Inter';
+}
+
+form > input {
+  background-color: #EBEFF2;
+  width: 80%;
+
+  padding: 10px;
+  align-items: center;
+}
+
+form > button {
+  background-color: #20EEB0;
+
+  padding: 10px;
+}
+
+.form_container li.todo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+
+.todo_labels {
+  width: 87%;
+}
+
+.btn_group {
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.btn_group img  {
+  width: 20px;
+  height: 20px;
+}
+
+.todo_labels p + p  {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #888888;
+  margin-top: -10px;
+}
+
+
+.cbox {
+  margin-right: 0.75rem;
+}
