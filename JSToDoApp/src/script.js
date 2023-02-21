@@ -28,6 +28,8 @@ fetchPromise.then((response) => {
   
 })
 
+
+
 const createTask = (task) => {
   let taskJSON = JSON.stringify(task)
   //console.log("taskJSON", taskJSON)
@@ -78,16 +80,27 @@ const getTask = () => {
 
       res.map((item)=>{
         let task_li = document.createElement("li")
-        task_li.id = 'task_div'
+        //task_li.id = 'task_div'
+        task_li.id = `${item._id}`
         task_li.classList.add("todo", "stack-small")
         task_li.innerHTML = `<div class="todo_labels"><p>${item.name}</p><p>${item.date}</p></div> <div class="btn_group">
-        <input type="checkbox" name=${item.name}  isCompleted="data.Completed" 
+        <input type="checkbox" name=${item.name} isCompleted=${item.isCompleted}
         dataId=${item._id} id="taskCheckBox" date=${item.date} class="cbox">
-        <img src="../assets/Vector.jpg" alt="">
+        <img src="../assets/Vector.jpg" alt="" id="img_del" onclick='handleDeleteClick("${item._id}")' />
       </div>`
+    
+    
 
-        task_container.append(task_li)
-        editTask()
+
+      task_container.append(task_li)
+
+    
+        //editTask()
+     /*let img = document.getElementById("img_del")
+      img.addEventListener('click',()=>{
+        callDelete(item._id)
+      })*/
+
       })
   })
   
@@ -95,10 +108,40 @@ const getTask = () => {
 
 getTask()
 
-const editTask = (id, newData) => {
-  let checkbox = document.getElementById("taskCheckBox")
-  //console.log("checkbox", checkbox)
+
+const handleDeleteClick = (id) => {
+  console.log("id is", id)
+  const apiURL = 'https://uptight-teal-walrus.cyclic.app/task'
+  
+  const requestOptions = {
+      method: 'DELETE'
+  }
+
+  
+  console.log("id after parsing is", `${apiURL}/${id}`)
+  //fetch(apiURL/id, requestOptions)
+  fetch(`${apiURL}/${id}`, requestOptions)
+  //fetch("https://uptight-teal-walrus.cyclic.app/task/63f42098bbc1f757e377870e", requestOptions)
+          //.then(res => res.json())
+          //.then(res => res)
+          //.then(data => getTask())
+          .then(data => console.log("delete data", data))
+          .catch(err => console.error(err))   
+
+  let task_container = document.getElementById('task_container')
+  let task_div = document.getElementById(`${id}`)
+  task_container.removeChild(task_div)
 }
+
+/*const editTask = (id, newData) => {
+  let checkbox = document.getElementById("taskCheckBox")
+  checkbox.addEventListener('change', function(){
+      if(this.checked) {
+        this.checked = !this.checked
+      }
+      console.log("this.checked",  this.checked)
+  })
+}*/
 
 
 
